@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="Javaweb,SSM,">
 
 
 
@@ -81,17 +81,23 @@
 
 
 
-<meta name="description" content="博客一枚。">
-<meta name="keywords" content="前端,js,jquery,javascript,html5,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,Developer,Programmer,Coder,Geek,html,css,css3,用户体验">
-<meta property="og:type" content="website">
-<meta property="og:title" content="KimJun博客">
-<meta property="og:url" content="//kimjun1982.github.io/index.html">
+<meta name="description" content="最近在学Java的SSM框架整合，Spring、Spring MVC、Mybatis。花了点时间做了一个简单的登录注册页面，源码已经上传到了git上。其中遇到了挺多的问题，但是还是没有放弃。过程是痛苦的，但结果是美好的。 SSM框架符合MVC的设计模式，Sping MVC是核心，通过前端控制器(DispatcherServlet)接收用户的请求，并根据用户的请求返回相应的视图给用户。Dispa">
+<meta name="keywords" content="Javaweb,SSM">
+<meta property="og:type" content="article">
+<meta property="og:title" content="利用SSM框架进行登录注册">
+<meta property="og:url" content="//kimjun1982.github.io/2018/05/30/SSM登录注册/index.html">
 <meta property="og:site_name" content="KimJun博客">
-<meta property="og:description" content="博客一枚。">
+<meta property="og:description" content="最近在学Java的SSM框架整合，Spring、Spring MVC、Mybatis。花了点时间做了一个简单的登录注册页面，源码已经上传到了git上。其中遇到了挺多的问题，但是还是没有放弃。过程是痛苦的，但结果是美好的。 SSM框架符合MVC的设计模式，Sping MVC是核心，通过前端控制器(DispatcherServlet)接收用户的请求，并根据用户的请求返回相应的视图给用户。Dispa">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="//kimjun1982.github.io/assets/blogImg/打马而过.jpg">
+<meta property="og:image" content="//kimjun1982.github.io/assets/blogImg/login.jpg">
+<meta property="og:image" content="//kimjun1982.github.io/assets/blogImg/database.jpg">
+<meta property="og:image" content="//kimjun1982.github.io/assets/blogImg/success.jpg">
+<meta property="og:updated_time" content="2018-05-30T16:04:41.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="KimJun博客">
-<meta name="twitter:description" content="博客一枚。">
+<meta name="twitter:title" content="利用SSM框架进行登录注册">
+<meta name="twitter:description" content="最近在学Java的SSM框架整合，Spring、Spring MVC、Mybatis。花了点时间做了一个简单的登录注册页面，源码已经上传到了git上。其中遇到了挺多的问题，但是还是没有放弃。过程是痛苦的，但结果是美好的。 SSM框架符合MVC的设计模式，Sping MVC是核心，通过前端控制器(DispatcherServlet)接收用户的请求，并根据用户的请求返回相应的视图给用户。Dispa">
+<meta name="twitter:image" content="//kimjun1982.github.io/assets/blogImg/打马而过.jpg">
 
 
 
@@ -121,13 +127,13 @@
 
 
 
-  <link rel="canonical" href="//kimjun1982.github.io/">
+  <link rel="canonical" href="//kimjun1982.github.io/2018/05/30/SSM登录注册/">
 
 
 
 
 
-  <title>KimJun博客</title>
+  <title>利用SSM框架进行登录注册 | KimJun博客</title>
   
 
 
@@ -147,8 +153,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -279,9 +284,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -294,7 +299,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="//kimjun1982.github.io/2018/11/15/Base64转MultipartFile实现/">
+    <link itemprop="mainEntityOfPage" href="//kimjun1982.github.io/2018/05/30/SSM登录注册/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="KimJun">
@@ -311,9 +316,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/15/Base64转MultipartFile实现/" itemprop="url">Base64转MultipartFile实现</a></h1>
+          <h1 class="post-title" itemprop="name headline">利用SSM框架进行登录注册</h1>
         
 
         <div class="post-meta">
@@ -325,8 +328,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-15T10:12:00+08:00">
-                2018-11-15
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-30T23:48:00+08:00">
+                2018-05-30
               </time>
             
 
@@ -363,18 +366,24 @@
       
 
       
-        
-          <blockquote>
-<p>前记：上传图片文件，我要求的方式是前端使用最简单的multipart/form-data,后台使用的是MultipartFile[]的方式接收，但是前端小哥用MUI一直发送失败，改用base64的方式发送。后端接收base64字符串后，装换成MultipartFile的方式，然后用Thumbnails对图片进行修改。  </p>
-</blockquote>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/11/15/Base64转MultipartFile实现/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
+        <p><img src="/assets/blogImg/打马而过.jpg"></p>
+<hr>
+<p>最近在学Java的SSM框架整合，Spring、Spring MVC、Mybatis。花了点时间做了一个简单的登录注册页面，源码已经上传到了git上。其中遇到了挺多的问题，但是还是没有放弃。过程是痛苦的，但结果是美好的。</p>
+<p>SSM框架符合MVC的设计模式，Sping MVC是核心，通过前端控制器(DispatcherServlet)接收用户的请求，并根据用户的请求返回相应的视图给用户。DispatcherServlet其实就是一个Servlet，它继承了HttpServlet这个抽象类。为了使用它，需要在web应用程序中的web.xml中配置一下，配置如下：<br><a id="more"></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- spring mvc核心：分发servlet --&gt;</span><br><span class="line">    &lt;servlet&gt;</span><br><span class="line">        &lt;servlet-name&gt;mvc-dispatcher&lt;/servlet-name&gt;</span><br><span class="line">        &lt;servlet-class&gt;org.springframework.web.servlet.DispatcherServlet&lt;/servlet-class&gt;</span><br><span class="line">        &lt;!-- spring mvc的配置文件 --&gt;</span><br><span class="line">        &lt;init-param&gt;</span><br><span class="line">            &lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;</span><br><span class="line">            &lt;param-value&gt;classpath:springMVC.xml&lt;/param-value&gt;</span><br><span class="line">        &lt;/init-param&gt;</span><br><span class="line">        &lt;load-on-startup&gt;1&lt;/load-on-startup&gt;</span><br><span class="line">    &lt;/servlet&gt;</span><br><span class="line">    &lt;servlet-mapping&gt;</span><br><span class="line">        &lt;servlet-name&gt;mvc-dispatcher&lt;/servlet-name&gt;</span><br><span class="line">        &lt;url-pattern&gt;/&lt;/url-pattern&gt;</span><br><span class="line">    &lt;/servlet-mapping&gt;</span><br></pre></td></tr></table></figure></p>
+<p>先看一下结果:</p>
+<p>登录页面：<br><img src="/assets/blogImg/login.jpg"></p>
+<p>数据库用户名和密码：<br><img src="/assets/blogImg/database.jpg"></p>
+<p>输入正确的用户名密码后：<br><img src="/assets/blogImg/success.jpg"></p>
+<p><strong>登录功能流程：jsp –&gt; controller –&gt; service –&gt; mybatis –back–&gt; jsp</strong><br><strong>注册功能流程: jsp –&gt; controller –&gt; service –&gt; mybatis –back–&gt; jsp</strong></p>
+<p>为了方便测试，一般先写后端的代码。先写Mybatis，与数据库建立连接，可以用mybatis的逆向工程生成mapper文件，也可以直接写mapper.xml，和实现方法。这些我写了部分的核心代码。</p>
+<p><strong>实体类：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">package com.itkim.pojo;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * @author KimJun</span><br><span class="line"> * @Time   下午10:47:19</span><br><span class="line"> * @Date   2018年5月30日</span><br><span class="line"> */</span><br><span class="line">public class User &#123;</span><br><span class="line">    private Integer id;</span><br><span class="line">    private String username;</span><br><span class="line">    private String password;</span><br><span class="line">    public Integer getId() &#123;</span><br><span class="line">        return id;</span><br><span class="line">    &#125;</span><br><span class="line">    public void setId(Integer id) &#123;</span><br><span class="line">        this.id = id;</span><br><span class="line">    &#125;</span><br><span class="line">    public String getUsername() &#123;</span><br><span class="line">        return username;</span><br><span class="line">    &#125;</span><br><span class="line">    public void setUsername(String username) &#123;</span><br><span class="line">        this.username = username;</span><br><span class="line">    &#125;</span><br><span class="line">    public String getPassword() &#123;</span><br><span class="line">        return password;</span><br><span class="line">    &#125;</span><br><span class="line">    public void setPassword(String password) &#123;</span><br><span class="line">        this.password = password;</span><br><span class="line">    &#125;</span><br><span class="line">    public User(Integer id, String username, String password) &#123;</span><br><span class="line">        super();</span><br><span class="line">        this.id = id;</span><br><span class="line">        this.username = username;</span><br><span class="line">        this.password = password;</span><br><span class="line">    &#125;</span><br><span class="line">    public User() &#123;</span><br><span class="line">        super();</span><br><span class="line">        // TODO Auto-generated constructor stub</span><br><span class="line">    &#125;</span><br><span class="line">    @Override</span><br><span class="line">    public String toString() &#123;</span><br><span class="line">        return &quot;User [id=&quot; + id + &quot;, username=&quot; + username + &quot;, password=&quot; + password + &quot;]&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">     </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>UserMapper接口：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">package com.itkim.mapper;</span><br><span class="line"></span><br><span class="line">import java.util.List;</span><br><span class="line"></span><br><span class="line">import com.itkim.pojo.User;</span><br><span class="line"></span><br><span class="line">public interface UserMapper &#123;</span><br><span class="line"></span><br><span class="line">    public User findUserByUsername(String username);</span><br><span class="line">    </span><br><span class="line">    public void insertSelective(User user);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>UserMapper.xml:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><br><span class="line">&lt;!DOCTYPE mapper</span><br><span class="line">    PUBLIC &quot;-//mybatis.org//DTD Mapper 3.0//EN&quot;</span><br><span class="line">    &quot;http://mybatis.org/dtd/mybatis-3-mapper.dtd&quot;&gt;</span><br><span class="line"></span><br><span class="line">    &lt;mapper namespace=&quot;com.itkim.mapper.UserMapper&quot;&gt;</span><br><span class="line">        </span><br><span class="line">        &lt;select id=&quot;findUserByUsername&quot; parameterType=&quot;String&quot; resultType=&quot;User&quot;&gt;</span><br><span class="line">            select * from User where username=#&#123;username&#125;</span><br><span class="line">        &lt;/select&gt;    </span><br><span class="line">        </span><br><span class="line">       &lt;insert id=&quot;insertSelective&quot; parameterType=&quot;com.itkim.pojo.User&quot;&gt;</span><br><span class="line">            INSERT INTO USER(USERNAME, PASSWORD) VALUES (#&#123;username&#125;, #&#123;password&#125;);</span><br><span class="line">      &lt;/insert&gt;     </span><br><span class="line">    &lt;/mapper&gt;</span><br></pre></td></tr></table></figure></p>
+<p><strong>Controller：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">package com.itkim.controller;</span><br><span class="line"></span><br><span class="line">import org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line">import org.springframework.stereotype.Controller;</span><br><span class="line">import org.springframework.ui.Model;</span><br><span class="line">import org.springframework.web.bind.annotation.RequestMapping;</span><br><span class="line"></span><br><span class="line">import com.itkim.pojo.User;</span><br><span class="line">import com.itkim.service.LoginService;</span><br><span class="line">import com.itkim.service.RegistService;</span><br><span class="line"></span><br><span class="line">@Controller</span><br><span class="line">@RequestMapping(&quot;/user&quot;)</span><br><span class="line">public class UserController &#123;</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    private LoginService loginService;</span><br><span class="line"></span><br><span class="line">    @RequestMapping(&quot;/login&quot;)</span><br><span class="line">    public String login(User user, Model model) &#123;</span><br><span class="line">        user = loginService.check(user.getUsername(), user.getPassword());</span><br><span class="line">        if (user != null) &#123;</span><br><span class="line">            model.addAttribute(user);</span><br><span class="line">            return &quot;welcome&quot;;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            return &quot;erros&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    @Autowired </span><br><span class="line">    private RegistService registService;</span><br><span class="line"></span><br><span class="line">    @RequestMapping(&quot;/regist&quot;)</span><br><span class="line">    public String regist(String username, String password, Model model) &#123;</span><br><span class="line">        </span><br><span class="line">        //调用registService进行注册</span><br><span class="line">        String value = registService.registService(username, password);</span><br><span class="line">        if(value.equals(&quot;1&quot;)) &#123;</span><br><span class="line">            return &quot;successRegist&quot;;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            return &quot;errosRegist&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>登录的service:</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">package com.itkim.service;</span><br><span class="line"></span><br><span class="line">import org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line">import org.springframework.stereotype.Service;</span><br><span class="line"></span><br><span class="line">import com.itkim.mapper.UserMapper;</span><br><span class="line">import com.itkim.pojo.User;</span><br><span class="line"></span><br><span class="line">@Service</span><br><span class="line">public class LoginService &#123;</span><br><span class="line">    @Autowired</span><br><span class="line">    UserMapper userMapper;</span><br><span class="line">    </span><br><span class="line">    public User check(String username, String password) &#123;</span><br><span class="line">        if (username != &quot;&quot; &amp;&amp; password != &quot;&quot;) &#123;</span><br><span class="line">            User user = userMapper.findUserByUsername(username);</span><br><span class="line">            if (user.getUsername().equals(username) &amp;&amp; user.getPassword().equals(password)) &#123;</span><br><span class="line">                return user;</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                return null;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        else &#123;</span><br><span class="line">            return null;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>注册的Service：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">package com.itkim.service;</span><br><span class="line"></span><br><span class="line">import java.util.List;</span><br><span class="line"></span><br><span class="line">import org.springframework.beans.factory.annotation.Autowired;</span><br><span class="line">import org.springframework.stereotype.Service;</span><br><span class="line"></span><br><span class="line">import com.itkim.mapper.UserMapper;</span><br><span class="line">import com.itkim.pojo.User;</span><br><span class="line"></span><br><span class="line">@Service</span><br><span class="line">public class RegistService &#123;</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    UserMapper userMapper;</span><br><span class="line">    </span><br><span class="line">    public String registService(String username, String password) &#123;</span><br><span class="line">            User user = userMapper.findUserByUsername(username);</span><br><span class="line"></span><br><span class="line">            // 如果user等于null 则说明用户名没有被注册</span><br><span class="line">            if (user == null) &#123;</span><br><span class="line">                userMapper.insertSelective(new User(null, username, password));</span><br><span class="line">                return &quot;1&quot;;</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                return &quot;0&quot;;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p>当然其实真正要写的代码不多，除去写配置文件的话，比原始的的方式简单。<br>刚开始用maven写web项目，配置文件一直出现问题。<br>遇到的问题：对部分的注解的作用不清晰，通过写完这个程序，对SSM的框架设计更加的熟悉。</p>
+
       
     </div>
     
@@ -382,6 +391,12 @@
     
 	<div>
 
+<div>
+
+    <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+
+</div>
+
 </div>
 	
     
@@ -392,14 +407,42 @@
 
     <footer class="post-footer">
       
-
+        <div class="post-tags">
+          
+            <a href="/tags/Javaweb/" rel="tag"># Javaweb</a>
+          
+            <a href="/tags/SSM/" rel="tag"># SSM</a>
+          
+        </div>
       
 
       
+      
+      
 
       
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/22/HelloWorld/" rel="next" title="Hello World~">
+                <i class="fa fa-chevron-left"></i> Hello World~
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/06/03/@requestMapping用法/" rel="prev" title="@RequestMapping 用法详解(转)">
+                @RequestMapping 用法详解(转) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
       
-        <div class="post-eof"></div>
+
+      
       
     </footer>
   </div>
@@ -409,537 +452,11 @@
   </article>
 
 
-    
-      
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="//kimjun1982.github.io/2018/09/12/spring编程思想/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="KimJun">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="KimJun博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/12/spring编程思想/" itemprop="url">IOC,DI,AOP简单的理解</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-12T00:37:00+08:00">
-                2018-09-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-	
-      
-      
-
-      
-        
-          
-            <p>最近在spring源码，简单的说一下初学者学习spring必须要理解的三个概念。  </p>
-<blockquote>
-<p>IOC（控制反转）：侧重于结果，对象的创建不再是通过new的方式创建，而是通过依赖注入的方式创建，将控制权交给spring，不用自己管理。所以叫做控制反转。</p>
-</blockquote>
-<blockquote>
-<p>DI（依赖注入）：侧重于过程，把对象通过setter方法、构造器方法、接口方式注入。非自己主动初始化依赖，而通过外部传入依赖对象的方式，我们就称为依赖注入。依赖就是赋值而已。  </p>
-</blockquote>
-<blockquote>
-<p>AOP（面向切面编程）：  一种编程思想。简单的来理解就是面向规则编程，发现一种有规律的事情的时，我们就可以认定它是一种固定的规则，于是我们就可以将它提取出来，作为单独的模块。比如：事务的操作时，1、开启一个事务，2、执行事务，3、事务回滚、4、关闭事务。这都是有规律的。</p>
-</blockquote>
-
-          
-        
+    <div class="post-spread">
       
     </div>
-    
-    
-    
-	<div>
-
-</div>
-	
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
   </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="//kimjun1982.github.io/2018/09/10/单例设计模式总结/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="KimJun">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="KimJun博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/10/单例设计模式总结/" itemprop="url">单例设计模式总结</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-10T13:12:00+08:00">
-                2018-09-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-	
-      
-      
-
-      
-        
-          <p><img src="/assets/blogImg/车.jpg">  </p>
-<p>最近在看设计模式，推荐一本好看的书，秦小波的《设计模式之禅》第二版。这本书讲的例子比教科书好得多，教科书为了显示专业性堆砌一堆高大上的专业术语。我觉得技术类的书籍也可以写得生动形象。  </p>
-<p>学习单例模式的步骤：什么是单例设计模式？为什么要用单例模式？项目怎么用单例模式？</p>
-<h5 id="定义：确保一个类只有一个实例，而且自行实例化并向整个系统提供这个实例。"><a href="#定义：确保一个类只有一个实例，而且自行实例化并向整个系统提供这个实例。" class="headerlink" title="定义：确保一个类只有一个实例，而且自行实例化并向整个系统提供这个实例。"></a>定义：确保一个类只有一个实例，而且自行实例化并向整个系统提供这个实例。</h5><p>单例模式应该是23种设计模式中最简单的一种模式了。它有以下几个要素：  </p>
-<ul>
-<li>私有的构造方法</li>
-<li>指向自己实例的私有静态引用</li>
-<li>以自己实例为返回值的静态的公有的方法  </li>
-</ul>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/09/10/单例设计模式总结/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-	<div>
-
-</div>
-	
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="//kimjun1982.github.io/2018/07/07/EasyUI+SSM/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="KimJun">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="KimJun博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/07/EasyUI+SSM/" itemprop="url">SSM+EasyUI的CRUD</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-07T20:50:00+08:00">
-                2018-07-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-	
-      
-      
-
-      
-        
-          <p><img src="/assets/blogImg/Iceland.jpg"></p>
-<p><strong>前言</strong><br>不知不觉已经已经7月份了，之前一直忙着考试和其他事情，博客也没有更新。<br>最近在学习前后端的整合，直接用上EasyUI，EasyUI虽然不太流行了，但还是值得学一下。无奈前端的知识漏了太多，JS,jQuery不怎么会，于是直接把这两个学一遍。这个案例里面的前端代码写得太乱。<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/07/07/EasyUI+SSM/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </p></div>
-    
-    
-    
-	<div>
-
-</div>
-	
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="//kimjun1982.github.io/2018/06/08/@RequestParam注解的使用/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="KimJun">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="KimJun博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/06/08/@RequestParam注解的使用/" itemprop="url">@RequestParam注解的使用</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-08T11:11:00+08:00">
-                2018-06-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-	
-      
-      
-
-      
-        
-          <p><img src="/assets/blogImg/海水.jpg"></p>
-<p><strong>前言</strong><br>在SpringMvc后台进行获取数据，一般是两种。<br>1.request.getParameter(“参数名”)<br>2.用@RequestParam注解获取</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/06/08/@RequestParam注解的使用/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-	<div>
-
-</div>
-	
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-  </section>
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
-  </nav>
-
 
 
           </div>
@@ -947,6 +464,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -1195,6 +716,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 

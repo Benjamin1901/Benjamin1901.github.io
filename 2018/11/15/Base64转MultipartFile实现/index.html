@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="Spring,">
 
 
 
@@ -81,17 +81,18 @@
 
 
 
-<meta name="description" content="博客一枚。">
-<meta name="keywords" content="前端,js,jquery,javascript,html5,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,Developer,Programmer,Coder,Geek,html,css,css3,用户体验">
-<meta property="og:type" content="website">
-<meta property="og:title" content="KimJun博客">
-<meta property="og:url" content="//kimjun1982.github.io/index.html">
+<meta name="description" content="前记：上传图片文件，我要求的方式是前端使用最简单的multipart/form-data,后台使用的是MultipartFile[]的方式接收，但是前端小哥用MUI一直发送失败，改用base64的方式发送。后端接收base64字符串后，装换成MultipartFile的方式，然后用Thumbnails对图片进行修改。">
+<meta name="keywords" content="Spring">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Base64转MultipartFile实现">
+<meta property="og:url" content="//kimjun1982.github.io/2018/11/15/Base64转MultipartFile实现/index.html">
 <meta property="og:site_name" content="KimJun博客">
-<meta property="og:description" content="博客一枚。">
+<meta property="og:description" content="前记：上传图片文件，我要求的方式是前端使用最简单的multipart/form-data,后台使用的是MultipartFile[]的方式接收，但是前端小哥用MUI一直发送失败，改用base64的方式发送。后端接收base64字符串后，装换成MultipartFile的方式，然后用Thumbnails对图片进行修改。">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-11-15T02:32:56.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="KimJun博客">
-<meta name="twitter:description" content="博客一枚。">
+<meta name="twitter:title" content="Base64转MultipartFile实现">
+<meta name="twitter:description" content="前记：上传图片文件，我要求的方式是前端使用最简单的multipart/form-data,后台使用的是MultipartFile[]的方式接收，但是前端小哥用MUI一直发送失败，改用base64的方式发送。后端接收base64字符串后，装换成MultipartFile的方式，然后用Thumbnails对图片进行修改。">
 
 
 
@@ -121,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="//kimjun1982.github.io/">
+  <link rel="canonical" href="//kimjun1982.github.io/2018/11/15/Base64转MultipartFile实现/">
 
 
 
 
 
-  <title>KimJun博客</title>
+  <title>Base64转MultipartFile实现 | KimJun博客</title>
   
 
 
@@ -147,8 +148,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -279,9 +279,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -311,9 +311,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/15/Base64转MultipartFile实现/" itemprop="url">Base64转MultipartFile实现</a></h1>
+          <h1 class="post-title" itemprop="name headline">Base64转MultipartFile实现</h1>
         
 
         <div class="post-meta">
@@ -363,18 +361,38 @@
       
 
       
-        
-          <blockquote>
+        <blockquote>
 <p>前记：上传图片文件，我要求的方式是前端使用最简单的multipart/form-data,后台使用的是MultipartFile[]的方式接收，但是前端小哥用MUI一直发送失败，改用base64的方式发送。后端接收base64字符串后，装换成MultipartFile的方式，然后用Thumbnails对图片进行修改。  </p>
 </blockquote>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/11/15/Base64转MultipartFile实现/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
+<a id="more"></a>
+<p>1.直接上主要的代码吧！  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">package com.itkim.util;</span><br><span class="line"></span><br><span class="line">import org.springframework.web.multipart.MultipartFile;</span><br><span class="line">import sun.misc.BASE64Decoder;</span><br><span class="line"></span><br><span class="line">import java.io.IOException;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * @description: TODO</span><br><span class="line"> * @author: KimJun</span><br><span class="line"> * @date: 18/11/13 00:25</span><br><span class="line"> */</span><br><span class="line">public class base64ToMultipart &#123;</span><br><span class="line">    public static MultipartFile base64ToMultipart(String base64) &#123;</span><br><span class="line">        try &#123;</span><br><span class="line">            String[] baseStrs = base64.split(&quot;,&quot;);</span><br><span class="line"></span><br><span class="line">            BASE64Decoder decoder = new BASE64Decoder();</span><br><span class="line">            byte[] b = new byte[0];</span><br><span class="line">            b = decoder.decodeBuffer(baseStrs[1]);</span><br><span class="line"></span><br><span class="line">            for(int i = 0; i &lt; b.length; ++i) &#123;</span><br><span class="line">                if (b[i] &lt; 0) &#123;</span><br><span class="line">                    b[i] += 256;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            return new BASE64DecodedMultipartFile(b, baseStrs[0]);</span><br><span class="line">        &#125; catch (IOException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">            return null;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        MultipartFile multipartFiles[] = new MultipartFile[2];</span><br><span class="line">        multipartFiles[0] = base64ToMultipart.base64ToMultipart(&quot;&quot;);</span><br><span class="line">        System.out.println(multipartFiles[0].getSize());</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">package com.itkim.util;</span><br><span class="line"></span><br><span class="line">import org.springframework.web.multipart.MultipartFile;</span><br><span class="line"></span><br><span class="line">import java.io.*;</span><br><span class="line"></span><br><span class="line">/**</span><br><span class="line"> * @description: TODO</span><br><span class="line"> * @author: KimJun</span><br><span class="line"> * @date: 18/11/12 23:37</span><br><span class="line"> */</span><br><span class="line"></span><br><span class="line">public class BASE64DecodedMultipartFile implements MultipartFile &#123;</span><br><span class="line"></span><br><span class="line">    private final byte[] imgContent;</span><br><span class="line">    private final String header;</span><br><span class="line"></span><br><span class="line">    public BASE64DecodedMultipartFile(byte[] imgContent, String header) &#123;</span><br><span class="line">        this.imgContent = imgContent;</span><br><span class="line">        this.header = header.split(&quot;;&quot;)[0];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public String getName() &#123;</span><br><span class="line">        // TODO - implementation depends on your requirements</span><br><span class="line">        return System.currentTimeMillis() + Math.random() + &quot;.&quot; + header.split(&quot;/&quot;)[1];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public String getOriginalFilename() &#123;</span><br><span class="line">        // TODO - implementation depends on your requirements</span><br><span class="line">        return System.currentTimeMillis() + (int)Math.random() * 10000 + &quot;.&quot; + header.split(&quot;/&quot;)[1];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public String getContentType() &#123;</span><br><span class="line">        // TODO - implementation depends on your requirements</span><br><span class="line">        return header.split(&quot;:&quot;)[1];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public boolean isEmpty() &#123;</span><br><span class="line">        return imgContent == null || imgContent.length == 0;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public long getSize() &#123;</span><br><span class="line">        return imgContent.length;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public byte[] getBytes() throws IOException &#123;</span><br><span class="line">        return imgContent;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public InputStream getInputStream() throws IOException &#123;</span><br><span class="line">        return new ByteArrayInputStream(imgContent);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void transferTo(File dest) throws IOException, IllegalStateException &#123;</span><br><span class="line">        new FileOutputStream(dest).write(imgContent);</span><br><span class="line">    &#125;I</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2.前端测试代码（需要jQuery）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;Title&lt;/title&gt;</span><br><span class="line">    &lt;script src=&quot;./jquery-3.3.1.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">请输入图片的Base64码 1--&lt;input name=&quot;data1&quot; style=&quot;width: 400px&quot;&gt;&lt;br&gt;</span><br><span class="line">请输入图片的Base64码 2--&lt;input name=&quot;data2&quot; style=&quot;width: 400px&quot;&gt;&lt;br&gt;</span><br><span class="line">&lt;button id=&quot;submit&quot; onclick=&quot;btnAction()&quot;&gt;点击发送请求&lt;/button&gt;</span><br><span class="line">&lt;script type=&quot;text/javascript&quot;&gt;</span><br><span class="line">    function btnAction() &#123;</span><br><span class="line"></span><br><span class="line">        var pictureFiles=[];</span><br><span class="line">        var data1=&#123;&quot;picNum&quot;:&quot;0&quot;,&quot;picString&quot;: $(&quot;*[name=&apos;data1&apos;]&quot;).val()&#125;;</span><br><span class="line">        var data2=&#123;&quot;picNum&quot;:&quot;1&quot;,&quot;picString&quot;: $(&quot;*[name=&apos;data2&apos;]&quot;).val()&#125;;</span><br><span class="line">        pictureFiles.push(data1);</span><br><span class="line">        pictureFiles.push(data2);</span><br><span class="line">        $.ajax(&#123;</span><br><span class="line">            type:&quot;POST&quot;,</span><br><span class="line">            url:&quot;http://localhost:8080/user/additem&quot;,</span><br><span class="line">            dataType:&quot;json&quot;,</span><br><span class="line">            contentType:&quot;application/json&quot;,</span><br><span class="line">            data:JSON.stringify(pictureFiles),</span><br><span class="line">            success:function(data)&#123;</span><br><span class="line">                console.log(&quot;成功上传。。。。&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p>3.Controller接收</p>
+<pre><code>@RequestMapping(value = &quot;additem&quot;, method = RequestMethod.POST)  
+@ResponseBody
+public Msg multipartFileUpload(@RequestBody List&lt;Pic&gt; pictureFiles) throws IOException {
+    System.out.println(pictureFiles.toString());
+    System.out.println(pictureFiles.size());
+    //如果图片的长度、大于8则抛异常
+    if (pictureFiles.size() &gt; 8) {
+        return Msg.fail(&quot;上传失败，图片的张数大于8&quot;);
+    } else {
+        //新建一个数组接收保存
+        MultipartFile[] pictureFile = new MultipartFile[pictureFiles.size()];
+        for (int i = 0; i &lt; pictureFiles.size(); i++) {
+            String ImgBase = pictureFiles.get(i).getPicString();
+            System.out.println(ImgBase);
+            if (!ImgBase.equals(null)) {
+                pictureFile[i] = base64ToMultipart.base64ToMultipart(ImgBase);
+            } else {
+                break;
+            }
+        }
+    }
+</code></pre>
       
     </div>
     
@@ -382,6 +400,12 @@
     
 	<div>
 
+<div>
+
+    <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+
+</div>
+
 </div>
 	
     
@@ -392,14 +416,36 @@
 
     <footer class="post-footer">
       
-
+        <div class="post-tags">
+          
+            <a href="/tags/Spring/" rel="tag"># Spring</a>
+          
+        </div>
       
 
       
+      
+      
 
       
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/12/spring编程思想/" rel="next" title="IOC,DI,AOP简单的理解">
+                <i class="fa fa-chevron-left"></i> IOC,DI,AOP简单的理解
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
       
-        <div class="post-eof"></div>
+
+      
       
     </footer>
   </div>
@@ -409,537 +455,11 @@
   </article>
 
 
-    
-      
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="//kimjun1982.github.io/2018/09/12/spring编程思想/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="KimJun">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="KimJun博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/12/spring编程思想/" itemprop="url">IOC,DI,AOP简单的理解</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-12T00:37:00+08:00">
-                2018-09-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-	
-      
-      
-
-      
-        
-          
-            <p>最近在spring源码，简单的说一下初学者学习spring必须要理解的三个概念。  </p>
-<blockquote>
-<p>IOC（控制反转）：侧重于结果，对象的创建不再是通过new的方式创建，而是通过依赖注入的方式创建，将控制权交给spring，不用自己管理。所以叫做控制反转。</p>
-</blockquote>
-<blockquote>
-<p>DI（依赖注入）：侧重于过程，把对象通过setter方法、构造器方法、接口方式注入。非自己主动初始化依赖，而通过外部传入依赖对象的方式，我们就称为依赖注入。依赖就是赋值而已。  </p>
-</blockquote>
-<blockquote>
-<p>AOP（面向切面编程）：  一种编程思想。简单的来理解就是面向规则编程，发现一种有规律的事情的时，我们就可以认定它是一种固定的规则，于是我们就可以将它提取出来，作为单独的模块。比如：事务的操作时，1、开启一个事务，2、执行事务，3、事务回滚、4、关闭事务。这都是有规律的。</p>
-</blockquote>
-
-          
-        
+    <div class="post-spread">
       
     </div>
-    
-    
-    
-	<div>
-
-</div>
-	
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
   </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="//kimjun1982.github.io/2018/09/10/单例设计模式总结/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="KimJun">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="KimJun博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/10/单例设计模式总结/" itemprop="url">单例设计模式总结</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-10T13:12:00+08:00">
-                2018-09-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-	
-      
-      
-
-      
-        
-          <p><img src="/assets/blogImg/车.jpg">  </p>
-<p>最近在看设计模式，推荐一本好看的书，秦小波的《设计模式之禅》第二版。这本书讲的例子比教科书好得多，教科书为了显示专业性堆砌一堆高大上的专业术语。我觉得技术类的书籍也可以写得生动形象。  </p>
-<p>学习单例模式的步骤：什么是单例设计模式？为什么要用单例模式？项目怎么用单例模式？</p>
-<h5 id="定义：确保一个类只有一个实例，而且自行实例化并向整个系统提供这个实例。"><a href="#定义：确保一个类只有一个实例，而且自行实例化并向整个系统提供这个实例。" class="headerlink" title="定义：确保一个类只有一个实例，而且自行实例化并向整个系统提供这个实例。"></a>定义：确保一个类只有一个实例，而且自行实例化并向整个系统提供这个实例。</h5><p>单例模式应该是23种设计模式中最简单的一种模式了。它有以下几个要素：  </p>
-<ul>
-<li>私有的构造方法</li>
-<li>指向自己实例的私有静态引用</li>
-<li>以自己实例为返回值的静态的公有的方法  </li>
-</ul>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/09/10/单例设计模式总结/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-	<div>
-
-</div>
-	
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="//kimjun1982.github.io/2018/07/07/EasyUI+SSM/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="KimJun">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="KimJun博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/07/EasyUI+SSM/" itemprop="url">SSM+EasyUI的CRUD</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-07T20:50:00+08:00">
-                2018-07-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-	
-      
-      
-
-      
-        
-          <p><img src="/assets/blogImg/Iceland.jpg"></p>
-<p><strong>前言</strong><br>不知不觉已经已经7月份了，之前一直忙着考试和其他事情，博客也没有更新。<br>最近在学习前后端的整合，直接用上EasyUI，EasyUI虽然不太流行了，但还是值得学一下。无奈前端的知识漏了太多，JS,jQuery不怎么会，于是直接把这两个学一遍。这个案例里面的前端代码写得太乱。<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/07/07/EasyUI+SSM/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </p></div>
-    
-    
-    
-	<div>
-
-</div>
-	
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="//kimjun1982.github.io/2018/06/08/@RequestParam注解的使用/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="KimJun">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="KimJun博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/06/08/@RequestParam注解的使用/" itemprop="url">@RequestParam注解的使用</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-08T11:11:00+08:00">
-                2018-06-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-	
-      
-      
-
-      
-        
-          <p><img src="/assets/blogImg/海水.jpg"></p>
-<p><strong>前言</strong><br>在SpringMvc后台进行获取数据，一般是两种。<br>1.request.getParameter(“参数名”)<br>2.用@RequestParam注解获取</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/06/08/@RequestParam注解的使用/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-	<div>
-
-</div>
-	
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-  </section>
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
-  </nav>
-
 
 
           </div>
@@ -947,6 +467,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -1195,6 +719,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 

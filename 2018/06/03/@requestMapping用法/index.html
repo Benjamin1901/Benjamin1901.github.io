@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="SpringMVC,Javaweb,">
 
 
 
@@ -81,17 +81,20 @@
 
 
 
-<meta name="description" content="博客一枚。">
-<meta name="keywords" content="前端,js,jquery,javascript,html5,开发者,程序猿,程序媛,极客,编程,代码,开源,IT网站,Developer,Programmer,Coder,Geek,html,css,css3,用户体验">
-<meta property="og:type" content="website">
-<meta property="og:title" content="KimJun博客">
-<meta property="og:url" content="//kimjun1982.github.io/index.html">
+<meta name="description" content="简介:@RequestMapping RequestMapping是一个用来处理请求地址映射的注解，可用于类或方法上。用于类上，表示类中的所有响应请求的方法都是以该地址作为父路径。 RequestMapping注解有六个属性，下面我们把他分成三类进行说明。">
+<meta name="keywords" content="SpringMVC,Javaweb">
+<meta property="og:type" content="article">
+<meta property="og:title" content="@RequestMapping 用法详解(转)">
+<meta property="og:url" content="//kimjun1982.github.io/2018/06/03/@requestMapping用法/index.html">
 <meta property="og:site_name" content="KimJun博客">
-<meta property="og:description" content="博客一枚。">
+<meta property="og:description" content="简介:@RequestMapping RequestMapping是一个用来处理请求地址映射的注解，可用于类或方法上。用于类上，表示类中的所有响应请求的方法都是以该地址作为父路径。 RequestMapping注解有六个属性，下面我们把他分成三类进行说明。">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="//kimjun1982.github.io/assets/blogImg/2.jpg">
+<meta property="og:updated_time" content="2018-06-03T03:14:38.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="KimJun博客">
-<meta name="twitter:description" content="博客一枚。">
+<meta name="twitter:title" content="@RequestMapping 用法详解(转)">
+<meta name="twitter:description" content="简介:@RequestMapping RequestMapping是一个用来处理请求地址映射的注解，可用于类或方法上。用于类上，表示类中的所有响应请求的方法都是以该地址作为父路径。 RequestMapping注解有六个属性，下面我们把他分成三类进行说明。">
+<meta name="twitter:image" content="//kimjun1982.github.io/assets/blogImg/2.jpg">
 
 
 
@@ -121,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="//kimjun1982.github.io/">
+  <link rel="canonical" href="//kimjun1982.github.io/2018/06/03/@requestMapping用法/">
 
 
 
 
 
-  <title>KimJun博客</title>
+  <title>@RequestMapping 用法详解(转) | KimJun博客</title>
   
 
 
@@ -147,8 +150,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -279,9 +281,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -294,7 +296,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="//kimjun1982.github.io/2018/11/15/Base64转MultipartFile实现/">
+    <link itemprop="mainEntityOfPage" href="//kimjun1982.github.io/2018/06/03/@requestMapping用法/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="KimJun">
@@ -311,9 +313,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/15/Base64转MultipartFile实现/" itemprop="url">Base64转MultipartFile实现</a></h1>
+          <h1 class="post-title" itemprop="name headline">@RequestMapping 用法详解(转)</h1>
         
 
         <div class="post-meta">
@@ -325,8 +325,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-11-15T10:12:00+08:00">
-                2018-11-15
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-03T11:11:00+08:00">
+                2018-06-03
               </time>
             
 
@@ -363,18 +363,37 @@
       
 
       
-        
-          <blockquote>
-<p>前记：上传图片文件，我要求的方式是前端使用最简单的multipart/form-data,后台使用的是MultipartFile[]的方式接收，但是前端小哥用MUI一直发送失败，改用base64的方式发送。后端接收base64字符串后，装换成MultipartFile的方式，然后用Thumbnails对图片进行修改。  </p>
-</blockquote>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/11/15/Base64转MultipartFile实现/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
+        <p><img src="/assets/blogImg/2.jpg">  </p>
+<hr>
+<h3 id="简介"><a href="#简介" class="headerlink" title="简介:"></a>简介:</h3><p>@RequestMapping</p>
+<p>RequestMapping是一个用来处理请求地址映射的注解，可用于类或方法上。用于类上，表示类中的所有响应请求的方法都是以该地址作为父路径。</p>
+<p>RequestMapping注解有六个属性，下面我们把他分成三类进行说明。</p>
+<a id="more"></a>
+<h4 id="1、-value，-method；"><a href="#1、-value，-method；" class="headerlink" title="1、 value， method；"></a>1、 value， method；</h4><p>value：     指定请求的实际地址，指定的地址可以是URI Template 模式（后面将会说明）；</p>
+<p>method：  指定请求的method类型， GET、POST、PUT、DELETE等；</p>
+<p>还有一个注意的，@RequestMapping的默认属性为value，所以@RequestMapping(value=”/example”)和@RequestMapping(“/example”)是等价的。</p>
+<h4 id="2、-consumes，produces；"><a href="#2、-consumes，produces；" class="headerlink" title="2、 consumes，produces；"></a>2、 consumes，produces；</h4><p>consumes： 指定处理请求的提交内容类型（Content-Type），例如application/json, text/html;</p>
+<p>produces:    指定返回的内容类型，仅当request请求头中的(Accept)类型中包含该指定类型才返回；</p>
+<h4 id="3、-params，headers；"><a href="#3、-params，headers；" class="headerlink" title="3、 params，headers；"></a>3、 params，headers；</h4><p>params： 指定request中必须包含某些参数值是，才让该方法处理。</p>
+<p>headers： 指定request中必须包含某些指定的header值，才能让该方法处理请求。</p>
+<h3 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h3><h4 id="1、value-method-示例"><a href="#1、value-method-示例" class="headerlink" title="1、value  / method 示例"></a>1、value  / method 示例</h4><p>默认RequestMapping(“….str…”)即为value的值；</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">@Controller</span><br><span class="line">@RequestMapping(&quot;/appointments&quot;)</span><br><span class="line">public class AppointmentsController &#123;</span><br><span class="line"></span><br><span class="line">    private AppointmentBook appointmentBook;</span><br><span class="line">    </span><br><span class="line">    @Autowired</span><br><span class="line">    public AppointmentsController(AppointmentBook appointmentBook) &#123;</span><br><span class="line">        this.appointmentBook = appointmentBook;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @RequestMapping(method = RequestMethod.GET)</span><br><span class="line">    public Map&lt;String, Appointment&gt; get() &#123;</span><br><span class="line">        return appointmentBook.getAppointmentsForToday();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @RequestMapping(value=&quot;/&#123;day&#125;&quot;, method = RequestMethod.GET)</span><br><span class="line">    public Map&lt;String, Appointment&gt; getForDay(@PathVariable @DateTimeFormat(iso=ISO.DATE) Date day, Model model) &#123;</span><br><span class="line">        return appointmentBook.getAppointmentsForDay(day);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @RequestMapping(value=&quot;/new&quot;, method = RequestMethod.GET)</span><br><span class="line">    public AppointmentForm getNewForm() &#123;</span><br><span class="line">        return new AppointmentForm();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @RequestMapping(method = RequestMethod.POST)</span><br><span class="line">    public String add(@Valid AppointmentForm appointment, BindingResult result) &#123;</span><br><span class="line">        if (result.hasErrors()) &#123;</span><br><span class="line">            return &quot;appointments/new&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">        appointmentBook.addAppointment(appointment);</span><br><span class="line">        return &quot;redirect:/appointments&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>value的uri值为以下三类：</p>
+<p>A） 可以指定为普通的具体值；</p>
+<p>B)  可以指定为含有某变量的一类值(URI Template Patterns with Path Variables)；</p>
+<p>C) 可以指定为含正则表达式的一类值( URI Template Patterns with Regular Expressions);</p>
+<p>example B)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@RequestMapping(value=&quot;/owners/&#123;ownerId&#125;&quot;, method=RequestMethod.GET)</span><br><span class="line">public String findOwner(@PathVariable String ownerId, Model model) &#123;</span><br><span class="line">  Owner owner = ownerService.findOwner(ownerId);  </span><br><span class="line">  model.addAttribute(&quot;owner&quot;, owner);  </span><br><span class="line">  return &quot;displayOwner&quot;; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>example C)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@RequestMapping(&quot;/spring-web/&#123;symbolicName:[a-z-]+&#125;-&#123;version:\d\.\d\.\d&#125;.&#123;extension:\.[a-z]&#125;&quot;)</span><br><span class="line">  public void handle(@PathVariable String version, @PathVariable String extension) &#123;    </span><br><span class="line">    // ...</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h4 id="2、consumes，produces-示例"><a href="#2、consumes，produces-示例" class="headerlink" title="2、consumes，produces 示例"></a>2、consumes，produces 示例</h4><p>cousumes的样例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@Controller</span><br><span class="line">@RequestMapping(value = &quot;/pets&quot;, method = RequestMethod.POST, consumes=&quot;application/json&quot;)</span><br><span class="line">public void addPet(@RequestBody Pet pet, Model model) &#123;    </span><br><span class="line">    // implementation omitted</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>方法仅处理request Content-Type为“application/json”类型的请求。</p>
+<p>produces的样例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@Controller</span><br><span class="line">@RequestMapping(value = &quot;/pets/&#123;petId&#125;&quot;, method = RequestMethod.GET, produces=&quot;application/json&quot;)</span><br><span class="line">@ResponseBody</span><br><span class="line">public Pet getPet(@PathVariable String petId, Model model) &#123;    </span><br><span class="line">    // implementation omitted</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>方法仅处理request请求中Accept头中包含了”application/json”的请求，同时暗示了返回的内容类型为application/json;</p>
+<h4 id="3-params、headers-示例"><a href="#3-params、headers-示例" class="headerlink" title="3 params、headers 示例"></a>3 params、headers 示例</h4><p>params的样例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@Controller</span><br><span class="line">@RequestMapping(&quot;/owners/&#123;ownerId&#125;&quot;)</span><br><span class="line">public class RelativePathUriTemplateController &#123;</span><br><span class="line"></span><br><span class="line">  @RequestMapping(value = &quot;/pets/&#123;petId&#125;&quot;, method = RequestMethod.GET, params=&quot;myParam=myValue&quot;)</span><br><span class="line">  public void findPet(@PathVariable String ownerId, @PathVariable String petId, Model model) &#123;    </span><br><span class="line">    // implementation omitted</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>仅处理请求中包含了名为“myParam”，值为“myValue”的请求；</p>
+<p>headers的样例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@Controller</span><br><span class="line">@RequestMapping(&quot;/owners/&#123;ownerId&#125;&quot;)</span><br><span class="line">public class RelativePathUriTemplateController &#123;</span><br><span class="line"></span><br><span class="line">@RequestMapping(value = &quot;/pets&quot;, method = RequestMethod.GET, headers=&quot;Referer=http://www.ifeng.com/&quot;)</span><br><span class="line">  public void findPet(@PathVariable String ownerId, @PathVariable String petId, Model model) &#123;    </span><br><span class="line">    // implementation omitted</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>仅处理request的header中包含了指定“Refer”请求头和对应值为“<a href="http://www.ifeng.com/”的请求；" target="_blank" rel="noopener">http://www.ifeng.com/”的请求；</a></p>
+<p>上面仅仅介绍了，RequestMapping指定的方法处理哪些请求，下面一篇将讲解怎样处理request提交的数据（数据绑定）和返回的数据。</p>
+
       
     </div>
     
@@ -382,6 +401,12 @@
     
 	<div>
 
+<div>
+
+    <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+
+</div>
+
 </div>
 	
     
@@ -392,14 +417,42 @@
 
     <footer class="post-footer">
       
-
+        <div class="post-tags">
+          
+            <a href="/tags/SpringMVC/" rel="tag"># SpringMVC</a>
+          
+            <a href="/tags/Javaweb/" rel="tag"># Javaweb</a>
+          
+        </div>
       
 
       
+      
+      
 
       
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/05/30/SSM登录注册/" rel="next" title="利用SSM框架进行登录注册">
+                <i class="fa fa-chevron-left"></i> 利用SSM框架进行登录注册
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/06/07/高考了/" rel="prev" title="高考了">
+                高考了 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
       
-        <div class="post-eof"></div>
+
+      
       
     </footer>
   </div>
@@ -409,537 +462,11 @@
   </article>
 
 
-    
-      
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="//kimjun1982.github.io/2018/09/12/spring编程思想/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="KimJun">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="KimJun博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/12/spring编程思想/" itemprop="url">IOC,DI,AOP简单的理解</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-12T00:37:00+08:00">
-                2018-09-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-	
-      
-      
-
-      
-        
-          
-            <p>最近在spring源码，简单的说一下初学者学习spring必须要理解的三个概念。  </p>
-<blockquote>
-<p>IOC（控制反转）：侧重于结果，对象的创建不再是通过new的方式创建，而是通过依赖注入的方式创建，将控制权交给spring，不用自己管理。所以叫做控制反转。</p>
-</blockquote>
-<blockquote>
-<p>DI（依赖注入）：侧重于过程，把对象通过setter方法、构造器方法、接口方式注入。非自己主动初始化依赖，而通过外部传入依赖对象的方式，我们就称为依赖注入。依赖就是赋值而已。  </p>
-</blockquote>
-<blockquote>
-<p>AOP（面向切面编程）：  一种编程思想。简单的来理解就是面向规则编程，发现一种有规律的事情的时，我们就可以认定它是一种固定的规则，于是我们就可以将它提取出来，作为单独的模块。比如：事务的操作时，1、开启一个事务，2、执行事务，3、事务回滚、4、关闭事务。这都是有规律的。</p>
-</blockquote>
-
-          
-        
+    <div class="post-spread">
       
     </div>
-    
-    
-    
-	<div>
-
-</div>
-	
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
   </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="//kimjun1982.github.io/2018/09/10/单例设计模式总结/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="KimJun">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="KimJun博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/10/单例设计模式总结/" itemprop="url">单例设计模式总结</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-10T13:12:00+08:00">
-                2018-09-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-	
-      
-      
-
-      
-        
-          <p><img src="/assets/blogImg/车.jpg">  </p>
-<p>最近在看设计模式，推荐一本好看的书，秦小波的《设计模式之禅》第二版。这本书讲的例子比教科书好得多，教科书为了显示专业性堆砌一堆高大上的专业术语。我觉得技术类的书籍也可以写得生动形象。  </p>
-<p>学习单例模式的步骤：什么是单例设计模式？为什么要用单例模式？项目怎么用单例模式？</p>
-<h5 id="定义：确保一个类只有一个实例，而且自行实例化并向整个系统提供这个实例。"><a href="#定义：确保一个类只有一个实例，而且自行实例化并向整个系统提供这个实例。" class="headerlink" title="定义：确保一个类只有一个实例，而且自行实例化并向整个系统提供这个实例。"></a>定义：确保一个类只有一个实例，而且自行实例化并向整个系统提供这个实例。</h5><p>单例模式应该是23种设计模式中最简单的一种模式了。它有以下几个要素：  </p>
-<ul>
-<li>私有的构造方法</li>
-<li>指向自己实例的私有静态引用</li>
-<li>以自己实例为返回值的静态的公有的方法  </li>
-</ul>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/09/10/单例设计模式总结/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-	<div>
-
-</div>
-	
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="//kimjun1982.github.io/2018/07/07/EasyUI+SSM/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="KimJun">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="KimJun博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/07/07/EasyUI+SSM/" itemprop="url">SSM+EasyUI的CRUD</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-07-07T20:50:00+08:00">
-                2018-07-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-	
-      
-      
-
-      
-        
-          <p><img src="/assets/blogImg/Iceland.jpg"></p>
-<p><strong>前言</strong><br>不知不觉已经已经7月份了，之前一直忙着考试和其他事情，博客也没有更新。<br>最近在学习前后端的整合，直接用上EasyUI，EasyUI虽然不太流行了，但还是值得学一下。无奈前端的知识漏了太多，JS,jQuery不怎么会，于是直接把这两个学一遍。这个案例里面的前端代码写得太乱。<br>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/07/07/EasyUI+SSM/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </p></div>
-    
-    
-    
-	<div>
-
-</div>
-	
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="//kimjun1982.github.io/2018/06/08/@RequestParam注解的使用/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="KimJun">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="KimJun博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/06/08/@RequestParam注解的使用/" itemprop="url">@RequestParam注解的使用</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-08T11:11:00+08:00">
-                2018-06-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-	
-      
-      
-
-      
-        
-          <p><img src="/assets/blogImg/海水.jpg"></p>
-<p><strong>前言</strong><br>在SpringMvc后台进行获取数据，一般是两种。<br>1.request.getParameter(“参数名”)<br>2.用@RequestParam注解获取</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/06/08/@RequestParam注解的使用/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-	<div>
-
-</div>
-	
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-  </section>
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
-  </nav>
-
 
 
           </div>
@@ -947,6 +474,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -967,8 +498,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -1044,6 +584,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#简介"><span class="nav-number">1.</span> <span class="nav-text">简介:</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、-value，-method；"><span class="nav-number">1.1.</span> <span class="nav-text">1、 value， method；</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、-consumes，produces；"><span class="nav-number">1.2.</span> <span class="nav-text">2、 consumes，produces；</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、-params，headers；"><span class="nav-number">1.3.</span> <span class="nav-text">3、 params，headers；</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#示例："><span class="nav-number">2.</span> <span class="nav-text">示例：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、value-method-示例"><span class="nav-number">2.1.</span> <span class="nav-text">1、value  / method 示例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、consumes，produces-示例"><span class="nav-number">2.2.</span> <span class="nav-text">2、consumes，produces 示例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-params、headers-示例"><span class="nav-number">2.3.</span> <span class="nav-text">3 params、headers 示例</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1195,6 +751,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 

@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="设计模式,">
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="KimJun博客" type="application/atom+xml">
+
+
+
+
+
+
+<meta name="description" content="最近在看设计模式，推荐一本好看的书，秦小波的《设计模式之禅》第二版。这本书讲的例子比教科书好得多，教科书为了显示专业性堆砌一堆高大上的专业术语。我觉得技术类的书籍也可以写得生动形象。   学习单例模式的步骤：什么是单例设计模式？为什么要用单例模式？项目怎么用单例模式？ 定义：确保一个类只有一个实例，而且自行实例化并向整个系统提供这个实例。单例模式应该是23种设计模式中最简单的一种模式了。它有">
+<meta name="keywords" content="设计模式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="单例设计模式总结">
+<meta property="og:url" content="//kimjun1982.github.io/2018/09/10/单例设计模式总结/index.html">
+<meta property="og:site_name" content="KimJun博客">
+<meta property="og:description" content="最近在看设计模式，推荐一本好看的书，秦小波的《设计模式之禅》第二版。这本书讲的例子比教科书好得多，教科书为了显示专业性堆砌一堆高大上的专业术语。我觉得技术类的书籍也可以写得生动形象。   学习单例模式的步骤：什么是单例设计模式？为什么要用单例模式？项目怎么用单例模式？ 定义：确保一个类只有一个实例，而且自行实例化并向整个系统提供这个实例。单例模式应该是23种设计模式中最简单的一种模式了。它有">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="//kimjun1982.github.io/assets/blogImg/车.jpg">
+<meta property="og:updated_time" content="2018-09-10T04:54:06.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="单例设计模式总结">
+<meta name="twitter:description" content="最近在看设计模式，推荐一本好看的书，秦小波的《设计模式之禅》第二版。这本书讲的例子比教科书好得多，教科书为了显示专业性堆砌一堆高大上的专业术语。我觉得技术类的书籍也可以写得生动形象。   学习单例模式的步骤：什么是单例设计模式？为什么要用单例模式？项目怎么用单例模式？ 定义：确保一个类只有一个实例，而且自行实例化并向整个系统提供这个实例。单例模式应该是23种设计模式中最简单的一种模式了。它有">
+<meta name="twitter:image" content="//kimjun1982.github.io/assets/blogImg/车.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="//kimjun1982.github.io/2018/09/10/单例设计模式总结/">
+
+
+
+
+
+  <title>单例设计模式总结 | KimJun博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">KimJun博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">赐我理由再披甲上阵</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-首页">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-标签">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-归档">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-关于我">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于我
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  
+  <div class="algolia-popup popup search-popup">
+    <div class="algolia-search">
+      <div class="algolia-search-input-icon">
+        <i class="fa fa-search"></i>
+      </div>
+      <div class="algolia-search-input" id="algolia-search-input"></div>
+    </div>
+
+    <div class="algolia-results">
+      <div id="algolia-stats"></div>
+      <div id="algolia-hits"></div>
+      <div id="algolia-pagination" class="algolia-pagination"></div>
+    </div>
+
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+  </div>
+
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="//kimjun1982.github.io/2018/09/10/单例设计模式总结/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="KimJun">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="KimJun博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">单例设计模式总结</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-10T13:12:00+08:00">
+                2018-09-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+	
+      
+      
+
+      
+        <p><img src="/assets/blogImg/车.jpg">  </p>
+<p>最近在看设计模式，推荐一本好看的书，秦小波的《设计模式之禅》第二版。这本书讲的例子比教科书好得多，教科书为了显示专业性堆砌一堆高大上的专业术语。我觉得技术类的书籍也可以写得生动形象。  </p>
+<p>学习单例模式的步骤：什么是单例设计模式？为什么要用单例模式？项目怎么用单例模式？</p>
+<h5 id="定义：确保一个类只有一个实例，而且自行实例化并向整个系统提供这个实例。"><a href="#定义：确保一个类只有一个实例，而且自行实例化并向整个系统提供这个实例。" class="headerlink" title="定义：确保一个类只有一个实例，而且自行实例化并向整个系统提供这个实例。"></a>定义：确保一个类只有一个实例，而且自行实例化并向整个系统提供这个实例。</h5><p>单例模式应该是23种设计模式中最简单的一种模式了。它有以下几个要素：  </p>
+<ul>
+<li>私有的构造方法</li>
+<li>指向自己实例的私有静态引用</li>
+<li>以自己实例为返回值的静态的公有的方法  </li>
+</ul>
+<a id="more"></a>
+<p>单例模式根据实例化对象时机的不同分为两种：一种是饿汉式单例，一种是懒汉式单例。饿汉式单例在单例类被加载时候，就实例化一个对象交给自己的引用；而懒汉式在调用取得实例方法的时候才会实例化对象。代码如下：  </p>
+<p>Eager mode:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">class Singleton&#123;  </span><br><span class="line">    private Singleton()&#123;&#125;  </span><br><span class="line">    private static final Singleton singleton = new Singleton();  </span><br><span class="line">    public static Singleton getInstance()&#123;</span><br><span class="line">        return singleton;</span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>Lazy mode:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">class Singleton&#123;  </span><br><span class="line">    private Singleton()&#123;&#125;  </span><br><span class="line">    private static Singleton singleton ;  </span><br><span class="line">    public static synchronized Singleton getInstance()&#123;  </span><br><span class="line">        if(singleton==null)  </span><br><span class="line">            singleton = new Singleton();  </span><br><span class="line">        return singleton;         </span><br><span class="line">    &#125;     </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>例子：古代封建社会，一个国家只能有一个皇帝，如果有两个皇帝，就不符合伦理，社会将会大乱，当然三国时期除外。  </p>
+<p>皇帝类：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 单例模式练习</span><br><span class="line"> * 这是一个皇帝类</span><br><span class="line"> * @author KimJun</span><br><span class="line"> * @Time   下午12:06:51</span><br><span class="line"> * @Date   2018年9月8日</span><br><span class="line"> */</span><br><span class="line">public class Emperor &#123;</span><br><span class="line">    private static final Emperor emperor = new Emperor();</span><br><span class="line"></span><br><span class="line">    private Emperor() &#123;  //私有的构造函数，避免被其他的类new出来一个对象</span><br><span class="line">        super();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public static Emperor getInstance() &#123;  //Emperor这个类可以new出来一对象</span><br><span class="line">        return emperor;                    //其他的类对该类的访问可以通过getInstance获取同一个对象</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public static void say() &#123;          //类的其他的方法，尽量是静态的。</span><br><span class="line">        System.out.println(&quot;我是康熙大帝...&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>然后在写一个大臣类，大臣每天上朝拜见的皇上，必须同一个皇上，如果有两个皇上，大臣们就不知道该跪拜哪个皇上。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 这是一个大臣类</span><br><span class="line"> * @author KimJun</span><br><span class="line"> * @Time   下午12:16:01</span><br><span class="line"> * @Date   2018年9月8日</span><br><span class="line"> */</span><br><span class="line">public class Minister &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        for(int day = 0; day &lt;= 5; day++) &#123;  //连续上朝五天，见到的都是同一个皇上</span><br><span class="line">            Emperor emperor = Emperor.getInstance();</span><br><span class="line">            emperor.say();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">输出结果:</span><br><span class="line">我是康熙大帝...</span><br><span class="line">我是康熙大帝...</span><br><span class="line">我是康熙大帝...</span><br><span class="line">我是康熙大帝...</span><br><span class="line">我是康熙大帝...</span><br><span class="line">我是康熙大帝...</span><br></pre></td></tr></table></figure></p>
+<p>##面试题##  </p>
+<p>#####1) 哪些类是单例模式的候选类？在Java中哪些类会成为单例？<br>  (1) 系统资源，如文件路径，数据库链接，系统常量等<br>  (2）全局状态化类，类似AutomicInteger的使用  </p>
+<p>  单例模式的优点：  </p>
+<pre><code>* 在内存中只有一个对象，节省内存空间。  
+* 避免频繁的创建销毁对象，可以提高性能。  
+* 避免对共享资源的多重占用。  
+* 可以全局访问。  
+</code></pre><p>  适用场景：由于单例模式的以上优点，所以是编程中用的比较多的一种设计模式。我总结了一下我所知道的适合使用单例模式的场景：  </p>
+<pre><code>* 需要频繁实例化然后销毁的对象。  
+* 创建对象时耗时过多或者耗资源过多，但又经常用到的对象。  
+* 有状态的工具类对象。  
+* 频繁访问数据库或文件的对象。
+</code></pre><p>#####2)你能在Java中编写单例里的getInstance()的代码？<br>  (1)静态成员直接初始化，或者在静态代码块初始化都可以<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">class Singleton&#123;  </span><br><span class="line">     private Singleton()&#123;&#125;  </span><br><span class="line">     private static Singleton singleton ;  </span><br><span class="line">     public static synchronized Singleton getInstance()&#123;  </span><br><span class="line">         if(singleton==null)  </span><br><span class="line">             singleton = new Singleton();  </span><br><span class="line">         return singleton;         </span><br><span class="line">     &#125;     </span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure></p>
+<p>该实现只要在一个ClassLoad下就会提供一个对象的单例。但是美中不足的是，不管该资源是否被请求，它都会创建一个对象，占用jvm内存。饿汉式是典型的空间换时间，当类装载的时候就会创建类的实例，不管你用不用，先创建出来，然后每次调用的时候，就不需要再判断，节省了运行时间。</p>
+<p>  (2) 根据lazy initialization思想，使用到时才初始化。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">class Singleton&#123;  </span><br><span class="line">        private Singleton()&#123;&#125;  </span><br><span class="line">        private static Singleton singleton ;  </span><br><span class="line">        public static synchronized Singleton getInstance()&#123;  </span><br><span class="line">            if(singleton==null)  </span><br><span class="line">                singleton = new Singleton();  </span><br><span class="line">            return singleton;         </span><br><span class="line">        &#125;     </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p>该实现方法加了同步锁，可以有效防止多线程在执行getInstance方法得到2个对象。<br>缺点：只有在第一次调用的时候，才会出现生成2个对象，才必须要求同步。而一旦singleton 不为null，系统依旧花费同步锁开销，有点得不偿失。    </p>
+<p>因此再改进出现写法3<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">class Singleton&#123;  </span><br><span class="line">        private Singleton()&#123;&#125;  </span><br><span class="line">        private static Singleton singleton ;  </span><br><span class="line">        public static Singleton getInstance()&#123;  </span><br><span class="line">            if(singleton==null)//1  </span><br><span class="line">                synchronized(Singleton.class)&#123;//2  </span><br><span class="line">                    singleton = new Singleton();//3  </span><br><span class="line">                &#125;  </span><br><span class="line">            return singleton;         </span><br><span class="line">        &#125;     </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p>这种写法减少了锁开销，但是在如下情况，却创建了2个对象：<br>  a:线程1执行到1挂起，线程1认为singleton为null<br>  b:线程2执行到1挂起，线程2认为singleton为null<br>  c:线程1被唤醒执行synchronized块代码，走完创建了一个对象<br>  d:线程2被唤醒执行synchronized块代码，走完创建了另一个对象<br>  所以看出这种写法，并不完美。  </p>
+<p>(4)为了解决3存在的问题，引入双重检查锁定<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">public static Singleton getInstance()&#123;  </span><br><span class="line">        if(singleton==null)//1  </span><br><span class="line">            synchronized(Singleton.class)&#123;//2  </span><br><span class="line">                if(singleton==null)//3  </span><br><span class="line">                    singleton = new Singleton();//4  </span><br><span class="line">            &#125;  </span><br><span class="line">        return singleton;         </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p>在同步锁代码块内部，再判断一次对象是否为null，为null才创建对象。这种写法已经接近完美：  a:线程1执行到1，已经进入synchronized的时候，线程挂起，线程1占有Singleton.class资源锁;<br>b:线程2执行到1，当它准备synchronized块时，因为Singleton.class被占用，线程2阻塞；<br>c:线程1被唤醒，判断出对象为null，执行完创建一个对象<br>d:线程2被唤醒，判断出对象不为null，不执行创建语句<br>如此分析，发现似乎没问题。但是实际上并不能保证它在单处理器或多处理器上正确运行；问题就出现在singleton = new Singleton()这一行代码。它可以简单的分成如下三个步骤：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mem= singleton();//1</span><br><span class="line">instance = mem;//2</span><br><span class="line">ctorSingleton(instance);//3</span><br></pre></td></tr></table></figure></p>
+<p> 这行代码先在内存开辟空间，赋给singleton的引用，然后执行new初始化数据，但是注意初始化是要消耗时间。如果此时线程3在执行步骤1的时候，发现singleton为非null，就直接返回，那么线程3返回的其实是一个没构造完成的对象。我们期望1,2,3按照反序执行，但是实际jvm内存模型，并没有明确的有序指定。这归咎于java的平台的内存模型允许“无序写入”。</p>
+<p>#####(5)在4的基础上引入volatile<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">class Singleton&#123;  </span><br><span class="line">    private Singleton()&#123;&#125;  </span><br><span class="line">    private static volatile Singleton singleton ;  </span><br><span class="line">    public static Singleton getInstance()&#123;  </span><br><span class="line">        if(singleton==null)//1  </span><br><span class="line">            synchronized(Singleton.class)&#123;//2  </span><br><span class="line">                if(singleton==null)//3  </span><br><span class="line">                    singleton = new Singleton();  </span><br><span class="line">            &#125;  </span><br><span class="line">        return singleton;         </span><br><span class="line">    &#125;     </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p> Volatile 变量具有 synchronized 的可见性特性，但是不具备原子特性。这就是说线程能够自动发现 volatile 变量的最新值。这种实现方式既可以实现线程安全地创建实例，而又不会对性能造成太大的影响。它只是第一次创建实例的时候同步，以后就不需要同步了，从而加快了运行速度。根据上面的分析，常见的两种单例实现方式都存在小小的缺陷，那么有没有一种方案，既能实现延迟加载，又能实现线程安全呢？  </p>
+<p>#####(6) Lazy initialization holder class模式<br>这个模式综合使用了Java的类级内部类和多线程缺省同步锁的知识，很巧妙地同时实现了延迟加载和线程安全。<br>　　1.相应的基础知识<br>   什么是类级内部类？<br>　　简单点说，类级内部类指的是，有static修饰的成员式内部类。如果没有static修饰的成员式内部类被称为对象级内部类。<br>　　<em> 类级内部类相当于其外部类的static成分，它的对象与外部类对象间不存在依赖关系，因此可直接创建。而对象级内部类的实例，是绑定在外部对象实例中的。  
+　　</em> 类级内部类中，可以定义静态的方法。在静态方法中只能够引用外部类中的静态成员方法或者成员变量。<br>　　* 类级内部类相当于其外部类的成员，只有在第一次被使用的时候才被会装载。  </p>
+<h5 id="3-在getInstance-方法上同步有优势还是仅同步必要的块更优优势？你更喜欢哪个方式？"><a href="#3-在getInstance-方法上同步有优势还是仅同步必要的块更优优势？你更喜欢哪个方式？" class="headerlink" title="3)在getInstance()方法上同步有优势还是仅同步必要的块更优优势？你更喜欢哪个方式？"></a>3)在getInstance()方法上同步有优势还是仅同步必要的块更优优势？你更喜欢哪个方式？</h5><p>这确实是一个非常好的问题，我几乎每次都会提该问题，用于检查面试者是否会考虑由于锁定带来的性能开销。因为锁定仅仅在创建实例时才有意义，然后其他时候实例仅仅是只读访问的，因此只同步必要的块的性能更优，并且是更好的选择。  </p>
+<p>缺点：只有在第一次调用的时候，才会出现生成2个对象，才必须要求同步。而一旦singleton不为null，系统依旧花费同步锁开销，有点得不偿失。  </p>
+<h5 id="4-什么是单例模式的延迟加载或早期加载？你如何实现它？"><a href="#4-什么是单例模式的延迟加载或早期加载？你如何实现它？" class="headerlink" title="4)什么是单例模式的延迟加载或早期加载？你如何实现它？"></a>4)什么是单例模式的延迟加载或早期加载？你如何实现它？</h5><h5 id="5-Java平台中的单例模式的实例有哪些？"><a href="#5-Java平台中的单例模式的实例有哪些？" class="headerlink" title="5) Java平台中的单例模式的实例有哪些？"></a>5) Java平台中的单例模式的实例有哪些？</h5><h5 id="6-单例模式的两次检查锁是什么？"><a href="#6-单例模式的两次检查锁是什么？" class="headerlink" title="6) 单例模式的两次检查锁是什么？"></a>6) 单例模式的两次检查锁是什么？</h5><p>可以使用“双重检查加锁(double checked locking)”的方式来实现，就可以既实现线程安全，又能够使性能不受很大的影响。那么什么是“双重检查加锁”机制呢？<br>所谓“双重检查加锁”机制，指的是：并不是每次进入getInstance方法都需要同步，而是先不同步，进入方法后，先检查实例是否存在，如果不存在才进行下面的同步块，这是第一重检查，进入同步块过后，再次检查实例是否存在，如果不存在，就在同步的情况下创建一个实例，这是第二重检查。这样一来，就只需要同步一次了，从而减少了多次在同步情况下进行判断所浪费的时间。<br>“双重检查加锁”机制的实现会使用关键字volatile，它的意思是：被volatile修饰的变量的值，将不会被本地线程缓存，所有对该变量的读写都是直接操作共享内存，从而确保多个线程能正确的处理该变量。Volatile是轻量级的synchronized，它在多处理器开发中保证了共享变量的“可见性”。可见性的意思是当一个线程修改一个共享变量时，另外一个线程能读到这个修改的值。它在某些情况下比synchronized的开销更小<br>注意：在java1.4及以前版本中，很多JVM对于volatile关键字的实现的问题，会导致“双重检查加锁”的失败，因此“双重检查加锁”机制只只能用在java5及以上的版本。  </p>
+<p>#####7)你如何阻止使用clone()方法创建单例实例的另一个实例？<br>该类型问题有时候会通过如何破坏单例或什么时候Java中的单例模式不是单例来被问及。<br>在JAVA里要注意的是，所有的类都默认的继承自Object，所以都有一个clone方法。为保证只有一个实例，要把这个口堵上。有两个方面，一个是单例类一定要是final的，这样用户就不能继承它了。另外，如果单例类是继承于其它类的，还要override它的clone方法，让它抛出异常。  </p>
+<p>#####8)如果阻止通过使用反射来创建单例类的另一个实例？<br>  开放的问题。在我的理解中，从构造方法中抛出异常可能是一个选项。<br>  通过反射创建单例类的另一个实例：<br>  如果借助AccessibleObject.setAccessible方法，通过反射机制调用私有构造器，反射攻击。</p>
+
+      
+    </div>
+    
+    
+    
+	<div>
+
+<div>
+
+    <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+
+</div>
+
+</div>
+	
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/设计模式/" rel="tag"># 设计模式</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/07/07/EasyUI+SSM/" rel="next" title="SSM+EasyUI的CRUD">
+                <i class="fa fa-chevron-left"></i> SSM+EasyUI的CRUD
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/12/spring编程思想/" rel="prev" title="IOC,DI,AOP简单的理解">
+                IOC,DI,AOP简单的理解 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.gif" alt="KimJun">
+            
+              <p class="site-author-name" itemprop="name">KimJun</p>
+              <p class="site-description motion-element" itemprop="description">博客一枚。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:wongkinjun140@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.weibo.com/u/2316135173" target="_blank" title="新浪微博">
+                      
+                        <i class="fa fa-fw fa-globe"></i>新浪微博</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#定义：确保一个类只有一个实例，而且自行实例化并向整个系统提供这个实例。"><span class="nav-number">1.</span> <span class="nav-text">定义：确保一个类只有一个实例，而且自行实例化并向整个系统提供这个实例。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-在getInstance-方法上同步有优势还是仅同步必要的块更优优势？你更喜欢哪个方式？"><span class="nav-number">2.</span> <span class="nav-text">3)在getInstance()方法上同步有优势还是仅同步必要的块更优优势？你更喜欢哪个方式？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-什么是单例模式的延迟加载或早期加载？你如何实现它？"><span class="nav-number">3.</span> <span class="nav-text">4)什么是单例模式的延迟加载或早期加载？你如何实现它？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-Java平台中的单例模式的实例有哪些？"><span class="nav-number">4.</span> <span class="nav-text">5) Java平台中的单例模式的实例有哪些？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-单例模式的两次检查锁是什么？"><span class="nav-number">5.</span> <span class="nav-text">6) 单例模式的两次检查锁是什么？</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">KimJun</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共字</span>
+</div>
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+  
+  
+  
+  <link rel="stylesheet" href="/lib/algolia-instant-search/instantsearch.min.css">
+
+  
+  
+  <script src="/lib/algolia-instant-search/instantsearch.min.js"></script>
+  
+
+  <script src="/js/src/algolia-search.js?v=5.1.4"></script>
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
